@@ -2,10 +2,16 @@
   "name": "ze_rok",
   "version": "0.0.0",
   "description": "Revolt test bot ",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts"
   },
   "author": "Fad F",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/collection": "^0.3.2",
+    "@types/node": "^16.11.7",
+    "revolt.js": "^5.1.0-alpha.7"
+  }
 }
