@@ -1,0 +1,11 @@
+{
+  "name": "ze_rok",
+  "version": "0.0.0",
+  "description": "Revolt test bot ",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fad F",
+  "license": "MIT"
+}
