@@ -8,7 +8,7 @@ import IConfig from './interfaces/IConfig'
 
 import cmdHandler from './handlers/command'
 
-class ZRKClient extends Client {
+class RZClient extends Client {
     private _config: IConfig
     public categories = readdirSync('./src/commands')
     public commands = new Collection<string, ICommand>()
@@ -28,4 +28,4 @@ class ZRKClient extends Client {
     }
 }
 
-export default ZRKClient
+export default RZClient

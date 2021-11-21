@@ -1,2 +1,2 @@
-# Revolt-Bot
- A test bot using revolt.js
+# Rizz
+ A Test Bot using revolt.js and typescript

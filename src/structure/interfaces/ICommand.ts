@@ -1,9 +1,9 @@
-import ZRKClient from '../Client'
+import RZClient from '../Client'
 import { Message } from 'revolt.js/dist/maps/Messages'
 
 interface IRun {
     (
-        client: ZRKClient,
+        client: RZClient,
         message: Message,
         args: string[]
     ): any | Promise<any>

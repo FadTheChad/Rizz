@@ -1,8 +1,8 @@
 import { readdirSync } from 'fs'
-import ZRKClient from '../Client'
+import RZClient from '../Client'
 import ICommand from '../interfaces/ICommand'
 
-const handler = (client: ZRKClient) => {
+const handler = (client: RZClient) => {
     for (const folder of client.categories) {
         if (folder === 'context') continue
 
