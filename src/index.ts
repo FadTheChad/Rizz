@@ -7,9 +7,6 @@ import { Message } from 'revolt.js/dist/maps/Messages'
 
 const client = new RZClient(config)
 
-client.on('ready', async () => {
-    console.log('ready!')
-})
 
 client.on('message', async (message: Message) => {
     if (message.author?.bot || typeof message.content !== 'string') return

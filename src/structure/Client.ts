@@ -7,6 +7,7 @@ import ICommand from './interfaces/ICommand'
 import IConfig from './interfaces/IConfig'
 
 import cmdHandler from './handlers/command'
+import eventHandler from './handlers/event'
 
 class RZClient extends Client {
     private _config: IConfig
@@ -14,6 +15,7 @@ class RZClient extends Client {
     public commands = new Collection<string, ICommand>()
 
     public loadCommands = cmdHandler
+    public loadEvents = eventHandler
 
     constructor(config: IConfig, options?: ClientOptions) {
         super(options)
@@ -24,6 +26,7 @@ class RZClient extends Client {
     public start() {
         console.log('Starting...')
         this.loadCommands(this)
+        this.loadEvents(this)
         this.loginBot(this._config.token)
     }
 }
