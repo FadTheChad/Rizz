@@ -7,5 +7,6 @@ export interface IRZEmbedOptions {
     title?: string,
     description?: string,
     fields?: IRZEmbedField[],
-    footer?: string
+    footer?: string,
+    colour?: string
 }

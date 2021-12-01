@@ -12,12 +12,14 @@ class RZEmbed {
     // Other Props
     public fields?: IRZEmbedField[]
     public footer?: string
+    public colour?: string
 
     constructor(options?: IRZEmbedOptions) {
         this.title = options?.title ?? ''
         this.description = options?.description ?? ''
         this.fields = options?.fields ?? []
         this.footer = options?.footer ?? ''
+        this.colour = options?.colour ?? ''
     }
 
     /*
@@ -54,12 +56,22 @@ class RZEmbed {
         return this
     }
 
+    public setColour(colour: string) {
+        this.colour = colour
+
+        return this
+    }
+
     public toString() {
         if (!this.title && !this.description) throw new Error('Either title or description must be defined')
 
         let data = ''
 
-        if (this.title) data += `> ## ${this.title}\n`
+        if (!(/^#[0-9A-F]{6}$/i.test(this.colour!)) || !this.colour) this.colour = '#FFFFFF'
+
+        if (this.title) {
+            data += `> ## $\\color{${this.colour}}\\textsf{${this.title}}$\n`
+        }
         if (this.description) data += `> ${this.description}\n`
 
         for (let field of (this.fields ?? [])) {
