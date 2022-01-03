@@ -1,6 +1,7 @@
 import { readdirSync } from 'fs'
 import RZClient from '../Client'
-import ICommand from '../interfaces/ICommand'
+import { Class } from 'type-fest'
+import Command from '../base/command/Command'
 
 const handler = (client: RZClient) => {
     for (const folder of client.categories) {
@@ -12,9 +13,11 @@ const handler = (client: RZClient) => {
         for (const file of commandFiles) {
             const req = require(`../../commands/${folder}/${file}`)
 
-            const command: ICommand = req.default
+            const CommandClass: Class<Command> = req.default
 
-            client.commands.set(command.name, command)
+            const command = new CommandClass()
+            console.log(command)
+            client.commands.set(command.data.name, command)
 
             console.log(`\t${file} has been loaded!`)
         }
