@@ -1,11 +1,15 @@
-import ICommand from '../../structure/interfaces/ICommand'
+import { IRun } from '../../structure/interfaces/ICommand'
 import RZEmbed from '../../utils/RZEmbed'
+import command from '../../structure/base/command/command.decorator'
+import Command from '../../structure/base/command/Command'
 
-const command: ICommand = {
+@command({
     name: 'ping',
     description: 'sends ping',
     aliases: 'test',
-    async run (client, message, args) {
+})
+class PingCommand extends Command {
+    public run: IRun = (client, message, args) => {
         let embed = new RZEmbed()
             .setTitle('Pong!')
             .addField({
@@ -14,9 +18,8 @@ const command: ICommand = {
             })
             .setColour('#FFFF00')
 
-        console.log(embed)
         message.channel?.sendMessage(embed.toString())
     }
 }
 
-export default command
+export default PingCommand
