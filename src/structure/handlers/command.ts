@@ -16,7 +16,7 @@ const handler = (client: RZClient) => {
             const CommandClass: Class<Command> = req.default
 
             const command = new CommandClass()
-            console.log(command)
+
             client.commands.set(command.data.name, command)
 
             console.log(`\t${file} has been loaded!`)
