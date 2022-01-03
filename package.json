@@ -12,6 +12,7 @@
   "dependencies": {
     "@discordjs/collection": "^0.3.2",
     "@types/node": "^16.11.7",
-    "revolt.js": "^5.1.0-alpha.7"
+    "revolt.js": "^5.1.0-alpha.7",
+    "type-fest": "^2.8.0"
   }
 }
