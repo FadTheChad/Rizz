@@ -1,10 +1,12 @@
-import IEvent from '../structure/interfaces/IEvent'
+import Event from '../structure/base/event/Event'
+import event from '../structure/base/event/event.decorator'
 import { Message } from 'revolt.js/dist/maps/Messages'
 import config from '../../config.json'
+import { Run } from '../structure/interfaces/IEvent'
 
-const event: IEvent = {
-    name: 'message',
-    run: (client, message: Message) => {
+@event({ name: 'message' })
+class MessageEvent extends Event {
+    public run: Run = (client, message: Message) => {
         if (message.author?.bot || typeof message.content !== 'string' || !message.content.startsWith(config.prefix)) return
 
         let args: string[] = message.content.slice(config.prefix.length).split(/ +/g)
@@ -28,4 +30,4 @@ const event: IEvent = {
     }
 }
 
-export default event
+export default MessageEvent
