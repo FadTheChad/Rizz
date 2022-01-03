@@ -1,7 +1,7 @@
 import RZClient from "../Client";
 import fs from 'fs'
-import IEvent from "../interfaces/IEvent";
-
+import { Class } from 'type-fest'
+import Event from '../base/event/Event'
 
 const handler = (client: RZClient) => {
     const eventFiles = fs.readdirSync('./src/events').filter(file => file.endsWith('.js') || file.endsWith('ts'))
@@ -10,15 +10,17 @@ const handler = (client: RZClient) => {
     for (const file of eventFiles) {
         const req = require(`../../events/${file}`)
 
-        const event: IEvent = req.default
+        const EventClass: Class<Event> = req.default
+        const event = new EventClass()
 
-        console.log(`\t${event.name} event has been loaded`)
+        const { data } = event
 
-        if (event.once) {
-            client.once(event.name, (...args) => event.run(client, ...args))
+        console.log(`\t${data.name} event has been loaded`)
+
+        if (data.once) {
+            client.once(data.name, (...args) => event.run(client, ...args))
         } else {
-
-            client.on(event.name as any, (...args: any[]) => event.run(client, ...args))
+            client.on(data.name as any, (...args: any[]) => event.run(client, ...args))
         }
     }
 }
