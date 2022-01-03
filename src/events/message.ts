@@ -12,9 +12,10 @@ const event: IEvent = {
         let commandName = args.shift()?.toLowerCase()
 
         let command = client.commands.get(commandName as string) ?? client.commands.find(c => {
-            if (typeof c.aliases === 'string') c.aliases = [c.aliases]
+            const { data } = c
+            if (typeof data.aliases === 'string') data.aliases = [data.aliases]
 
-            return !!c.aliases && c.aliases.includes(commandName as string)
+            return !!data.aliases && data.aliases.includes(commandName as string)
         })
 
         if (!command) return
