@@ -3,16 +3,16 @@ import { Client, ClientOptions } from 'revolt.js'
 import Collection from '@discordjs/collection'
 import { readdirSync } from 'fs'
 
-import ICommand from './interfaces/ICommand'
 import IConfig from './interfaces/IConfig'
 
 import cmdHandler from './handlers/command'
 import eventHandler from './handlers/event'
+import Command from './base/command/Command'
 
 class RZClient extends Client {
     private _config: IConfig
     public categories = readdirSync('./src/commands')
-    public commands = new Collection<string, ICommand>()
+    public commands = new Collection<string, Command>()
 
     public loadCommands = cmdHandler
     public loadEvents = eventHandler
@@ -23,11 +23,11 @@ class RZClient extends Client {
         this._config = config
     }
 
-    public start() {
+    public async start() {
         console.log('Starting...')
         this.loadCommands(this)
         this.loadEvents(this)
-        this.loginBot(this._config.token)
+        await this.loginBot(this._config.token)
     }
 }
 
