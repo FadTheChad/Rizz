@@ -1,7 +1,7 @@
 import RZClient from '../Client'
 import { Message } from 'revolt.js/dist/maps/Messages'
 
-interface IRun {
+export interface IRun {
     (
         client: RZClient,
         message: Message,
@@ -9,9 +9,13 @@ interface IRun {
     ): any | Promise<any>
 }
 
-export default interface ICommand {
+export interface ICommandData {
     name: string,
     description?: string,
     aliases?: string | string[]
+}
+
+export default interface ICommand {
+    data: ICommandData,
     run: IRun
 }
