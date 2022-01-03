@@ -1,12 +1,16 @@
 import RZClient from "../Client";
 
-type Run = (
+export type Run = (
     client: RZClient,
     ...args: any[]
 ) => any
 
-export default interface IEvent{
-    name: string
-    once?: boolean,
+export interface IEventData {
+    name: string,
+    once?: boolean
+}
+
+export default interface IEvent {
+    data: IEventData,
     run: Run
 }
