@@ -3,7 +3,7 @@ import RZClient from '../Client'
 import { Class } from 'type-fest'
 import Command from '../base/command/Command'
 
-const handler = (client: RZClient) => {
+const handler = async (client: RZClient) => {
     for (const folder of client.categories) {
         if (folder === 'context') continue
 

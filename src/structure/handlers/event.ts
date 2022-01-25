@@ -3,7 +3,7 @@ import fs from 'fs'
 import { Class } from 'type-fest'
 import Event from '../base/event/Event'
 
-const handler = (client: RZClient) => {
+const handler = async (client: RZClient) => {
     const eventFiles = fs.readdirSync('./src/events').filter(file => file.endsWith('.js') || file.endsWith('ts'))
     console.log('\nLoading events...\n')
 
