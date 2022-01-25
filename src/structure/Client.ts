@@ -25,8 +25,11 @@ class RZClient extends Client {
 
     public async start() {
         console.log('Starting...')
-        this.loadCommands(this)
-        this.loadEvents(this)
+        
+        await this.loadCommands(this)
+        
+        await this.loadEvents(this)
+        
         await this.loginBot(this._config.token)
     }
 }
