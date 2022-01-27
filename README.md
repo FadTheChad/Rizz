@@ -4,7 +4,7 @@
 ## Config.json example 
 ```json 
 {
-"token": "yourToken",
-"prefix": "yourPrefix"
+    "token": "yourToken",
+    "prefix": "yourPrefix"
 }
 ```
